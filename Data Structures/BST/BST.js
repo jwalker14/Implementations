@@ -52,9 +52,9 @@ class BST{
 
 //for testing
 var tree = new BST(new Node(Math.floor(Math.random() * 10000)));  //create a tree
-for(var i = 0; i < 1000000; i++){                                 //insert some random variables
+for(var i = 0; i < 1000; i++){                                 //insert some random variables
   tree.insert(Math.floor(Math.random() * 1000))
 }
 
-root = tree.get_root()                                            //get the root
-console.log(root.left)                                      //console the left val
+r = tree.get_root()                                            //get the root
+console.log(r.left)                                      //console the left val
