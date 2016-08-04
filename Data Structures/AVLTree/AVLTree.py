@@ -1,14 +1,16 @@
 """
-Binary Tree PseudoCode
+AVL Tree extends from BST PseudoCode
+In an AVL tree the heights of the two subtrees of any node differ by at most 1 if the differ more than one rebalancing is done.
+AVL Trees comparable to Red Black Trees
 
 Operations:
-Searching
-Insert Node
-Deletion
+Searching - O(log n)
+Insert Node - O(log n)
+Deletion - O(log n)
 Traversal
-Verification
-MinValue
-MaxValue
+Verification - same
+MinValue - same
+MaxValue - same
 
 class Node
   Node left
@@ -24,23 +26,9 @@ Applications:
 
 Complexities:
 
-
-BFS and DFSs of above Tree
-
-Breadth First Traversal : 1 2 3 4 5
-
-Depth First Traversals:
-      Preorder Traversal : 1 2 4 5 3
-      Inorder Traversal  :  4 2 5 1 3
-      Postorder Traversal : 4 5 2 3 1
-
 """
 
 import random;
-from Queue import QNode
-from Queue import Queue
-
-
 
 class Node:
 
@@ -49,7 +37,7 @@ class Node:
     self.right = None
     self.value = val
 
-class BST:
+class AVL:
   def __init__(self, n):
     self.root = n;
 
@@ -217,33 +205,19 @@ class BST:
   def pre_order(self):
     self.pre_order_rec(self.root, print_node)
 
-  def BFS(self):
-    # n = QNode(self.root)
-    Q = Queue(self.root)
-    while(Q.size > 0):
-      n = Q.head
-      if n.data is not None: # we have a leaf node skip
-        Q.enqueue(QNode(n.data.left))
-        Q.enqueue(QNode(n.data.right))
-      old = Q.dequeue()
-      if old.data is None:
-        print ","
-      else:
-        print old.data.value
-    return Q
-
-
 def print_node(n):
   print n.value
 
 
-n = 50
+n = 10
 node = Node(n)
 
-tree = BST(node)
+tree = AVL(node)
 
 for i in range(0,50):
   n = random.randint(0, 100)
+  print n
   tree.insert(n)
 
-tree.BFS()
+tree.remove(46)
+tree.pre_order()
